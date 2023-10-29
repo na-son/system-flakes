@@ -16,7 +16,6 @@
 outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     configuration = { pkgs, ... }: {
-      # Auto upgrade nix package and the daemon service.
       nixpkgs.hostPlatform = "aarch64-darwin";
       nix.package = pkgs.nix;
       nix.settings.experimental-features = "nix-command flakes";
@@ -29,16 +28,19 @@ outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
     };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#luna
-    # Or switch using:
     # $ darwin-rebuild switch --flake .#luna
     darwinConfigurations."luna" = nix-darwin.lib.darwinSystem {
-      modules = [ ./darwin.nix ];
+      modules = [ 
+        ./darwin.nix
+
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.nason = import ./home.nix; # TODO: add your username here!
+        }
+      ];
     };
 
-    # Expose the package set, including overlays, for convenience.
     darwinPackages = self.darwinConfigurations."luna".pkgs;
   };
 }
-
