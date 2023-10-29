@@ -11,30 +11,40 @@
 
   system.stateVersion = 4;
 
-  system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
-  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
-  system.defaults.NSGlobalDomain.KeyRepeat = 1;
-  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
-  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
-  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
+  system.defaults = {
+    NSGlobalDomain = {
+      AppleKeyboardUIMode = 3;
+      ApplePressAndHoldEnabled = false;
+      InitialKeyRepeat = 10;
+      KeyRepeat = 1;
+      NSAutomaticCapitalizationEnabled = false;
+      NSAutomaticDashSubstitutionEnabled = false;
+      NSAutomaticPeriodSubstitutionEnabled = false;
+      NSAutomaticQuoteSubstitutionEnabled = false;
+      NSAutomaticSpellingCorrectionEnabled = false;
+      NSNavPanelExpandedStateForSaveMode = true;
+      NSNavPanelExpandedStateForSaveMode2 = true;
+      _HIHideMenuBar = false;
+    };
+    
+    dock = {
+      autohide = false;
+      mru-spaces = false;
+      orientation = "bottom";
+      showhidden = true;
+    };
 
-  system.defaults.dock.autohide = false;
-  system.defaults.dock.mru-spaces = false;
-  system.defaults.dock.orientation = "bottom";
-  system.defaults.dock.showhidden = true;
+    finder = {
+      AppleShowAllExtensions = true;
+      FXEnableExtensionChangeWarning = false;
+      QuitMenuItem = true;
+    };
 
-  system.defaults.finder.AppleShowAllExtensions = true;
-  system.defaults.finder.QuitMenuItem = true;
-  system.defaults.finder.FXEnableExtensionChangeWarning = false;
-
-  system.defaults.trackpad.Clicking = true;
-  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
+    trackpad = {
+      Clicking = true;
+      TrackpadThreeFingerDrag = true;
+    };
+  };
 
   #services.yabai.enable = true;
   #services.yabai.package = pkgs.yabai;
@@ -44,7 +54,6 @@
     [
       pkgs.vim
       pkgs.helix
-      #pkgs.skhd
       pkgs.iterm2
       pkgs.vscode
     ];
