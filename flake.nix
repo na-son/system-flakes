@@ -25,6 +25,8 @@ outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
       programs.zsh.enable = true;
+
+      users.users.nason.home = "/Users/nason"; # TODO: set username here
     };
   in
   {
