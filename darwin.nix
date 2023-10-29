@@ -28,7 +28,7 @@
     };
     
     dock = {
-      autohide = false;
+      autohide = true; 
       mru-spaces = false;
       orientation = "bottom";
       showhidden = true;
