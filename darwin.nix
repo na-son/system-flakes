@@ -46,6 +46,7 @@
       pkgs.helix
       #pkgs.skhd
       pkgs.iterm2
+      pkgs.vscode
     ];
 }
 
