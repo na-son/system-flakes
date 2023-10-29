@@ -66,7 +66,7 @@
                 ({ pkgs, ... }: {
 
                   users.users.${myUserName} = {
-                    home = "/Users${myUserName}";
+                    home = "/Users/${myUserName}";
                   };
 
 
