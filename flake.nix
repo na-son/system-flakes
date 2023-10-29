@@ -64,6 +64,13 @@
                 self.nixosModules.darwin
                 # Your machine's configuration.nix goes here
                 ({ pkgs, ... }: {
+
+                  users.users.${myUserName} = {
+                    home = "/Users${myUserName}";
+                  };
+
+
+
                   services.nix-daemon.enable = true;
 
                   system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
