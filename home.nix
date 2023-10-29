@@ -3,5 +3,7 @@
     home.stateVersion = "23.05";
     home.packages = with pkgs; [
         silver-searcher
+        iterm2
+        vscode
     ];
 }

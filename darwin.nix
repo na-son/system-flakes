@@ -55,9 +55,6 @@
   environment.systemPackages =
     [
       pkgs.vim
-      pkgs.helix
-      pkgs.iterm2
-      pkgs.vscode
     ];
 }
 
