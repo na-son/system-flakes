@@ -30,7 +30,7 @@ outputs = inputs@{ self, nix-darwin, nixpkgs }:
     # Or switch using:
     # $ darwin-rebuild switch --flake .#luna
     darwinConfigurations."luna" = nix-darwin.lib.darwinSystem {
-      modules = [ ./configuration.nix ];
+      modules = [ ./darwin.nix ];
     };
 
     # Expose the package set, including overlays, for convenience.
