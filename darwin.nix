@@ -6,6 +6,8 @@
   nixpkgs.hostPlatform = "aarch64-darwin";
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
+  
+  users.users.nason.home = "/Users/nason"; #TODO: set username
 
   programs.zsh.enable = true;
 
