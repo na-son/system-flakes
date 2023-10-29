@@ -36,16 +36,16 @@
   system.defaults.trackpad.Clicking = true;
   system.defaults.trackpad.TrackpadThreeFingerDrag = true;
 
-  services.yabai.enable = true;
-  services.yabai.package = pkgs.yabai;
-  services.skhd.enable = true;
-
+  #services.yabai.enable = true;
+  #services.yabai.package = pkgs.yabai;
+  #services.skhd.enable = true;
 
   environment.systemPackages =
     [
       pkgs.vim
       pkgs.helix
-      pkgs.skhd
+      #pkgs.skhd
+      pkgs.iterm2
     ];
 }
 
