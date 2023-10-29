@@ -11,7 +11,7 @@
     nixos-flake.url = "github:na-son/unified";
   };
 
-  outputs = inputs@{ self, ... }:
+  outputs = inputs@{ self, nix-darwin, ... }:
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
       imports = [
@@ -57,53 +57,19 @@
 
           # Configurations for macOS machines
           darwinConfigurations = {
-            luna = self.nixos-flake.lib.mkMacosSystem {
+            luna = nix-darwin.lib.darwinSystem {
               nixpkgs.hostPlatform = "aarch64-darwin";
+              modules = [ ./darwin.nix ];
               imports = [
                 self.nixosModules.common # See below for "nixosModules"!
                 self.nixosModules.darwin
                 # Your machine's configuration.nix goes here
-                ({ pkgs, ... }: {
+                #({ pkgs, ... }: {
 
-                  users.users.${myUserName} = {
-                    home = "/Users/${myUserName}";
-                  };
-
-
-
-                  services.nix-daemon.enable = true;
-
-                  system.defaults.NSGlobalDomain.AppleKeyboardUIMode = 3;
-                  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
-                  system.defaults.NSGlobalDomain.InitialKeyRepeat = 10;
-                  system.defaults.NSGlobalDomain.KeyRepeat = 1;
-                  system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
-                  system.defaults.NSGlobalDomain.NSAutomaticDashSubstitutionEnabled = false;
-                  system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
-                  system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
-                  system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
-                  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode = true;
-                  system.defaults.NSGlobalDomain.NSNavPanelExpandedStateForSaveMode2 = true;
-                  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
-                
-                  system.defaults.dock.autohide = true;
-                  system.defaults.dock.mru-spaces = false;
-                  system.defaults.dock.orientation = "bottom";
-                  system.defaults.dock.showhidden = true;
-                
-                  system.defaults.finder.AppleShowAllExtensions = true;
-                  system.defaults.finder.QuitMenuItem = true;
-                  system.defaults.finder.FXEnableExtensionChangeWarning = false;
-                
-                  system.defaults.trackpad.Clicking = true;
-                  system.defaults.trackpad.TrackpadThreeFingerDrag = true;
-                
-                  services.yabai.enable = true;
-                  services.yabai.package = pkgs.yabai;
-                  services.skhd.enable = true;
-
-                  system.stateVersion = 4;
-                })
+                #  users.users.${myUserName} = {
+                #    home = "/Users/${myUserName}";
+                #  };
+                #})
                 # Your home-manager configuration
                 self.darwinModules.home-manager
                 {
