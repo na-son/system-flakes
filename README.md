@@ -1,8 +1,21 @@
-# WIP
+# My personal system flakes
 
-Install nix (determinate systems)
+Currently only contains my new `nix-darwin` config, working on integrating
+my nixos and `home-manager` configs.
 
-Clone repo
+
+## Getting started
+Install nix.
+
+```shell
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+```
+
+Clone repo.
+
+```shell
+git clone git@github.com:na-son/system-flakes.git
+```
 
 ## Macos
 
@@ -23,8 +36,3 @@ cd ~/.config/nix/darwin
 darwin-rebuild switch --flake .#luna
 ```
 
-Nixos is simpler.
-
-```shell
-nixos-rebuild switch --flake .#hecate
-```
