@@ -11,12 +11,6 @@ Install nix.
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
-Clone repo.
-
-```shell
-git clone git@github.com:na-son/system-flakes.git
-```
-
 ## Macos
 
 The determinate systems installer configures `/etc/nix/nix.conf`, but `nix-darwin` wishes to control this file.
